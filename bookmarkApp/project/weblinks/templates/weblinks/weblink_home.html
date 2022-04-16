@@ -1,0 +1,24 @@
+{% extends "users/base.html"%}
+
+{% block content %}
+
+<div class="container mt-2 mb-2 ml-2 mr-2">
+    <div class="row "> 
+        {% for v,l in posts %}
+        <div class=" col-sm-12 col-md-4 col-lg-3 mr-2 ml-2 mb-2 pr-2  pl-2 ">
+            <div class="card">
+                <div class="card-header border">{{l}}</div>
+                <div class="card-body overflow-auto " style=" height: 150px;">
+                    {% for a in v %}
+                    <a href="{{a.site}}" target="_blank" title="{{a.name}}">{{a.name}} </a>
+                    &nbsp;&nbsp;
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

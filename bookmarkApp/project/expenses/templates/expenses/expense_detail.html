@@ -1,0 +1,33 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="table-responsive-md ">
+        <table class="table table-sm  caption-top ">
+            <caption>
+                <h2>Transaction Detial</h2>
+            </caption> 
+            <th>ID</th>
+            <th>ACCOUNT</th>
+            <th>CATEGORY</th>
+            <th>SUBCATEGORY</th>
+            <th>DATE</th>
+            <th>AMOUNT</th>
+            <th></th>
+            <th></th>
+
+
+            <tr>
+                <td>{{ object.id }}</td>
+                <td><a href="{% url 'Expense-account' object.account %}"> {{ object.account }}</a></td>
+                <td><a href="{% url 'Expense-category' object.category %}">{{object.category}}</a></td>
+                <td>{{object.subcategory}}</td>
+                <td><a href="{% url 'Expense-date' object.entry_date %}">{{object.entry_date}}</a></td>
+                <td>{{object.amount}}</td>
+                <td> <a href="{% url 'Expense-update' object.id %}">Edit</a></td>
+                <td><a href="{% url 'Expense-delete' object.id %}">Delete</a> </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+{% endblock content %}

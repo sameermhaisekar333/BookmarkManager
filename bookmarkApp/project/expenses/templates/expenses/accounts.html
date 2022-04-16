@@ -1,0 +1,69 @@
+{% extends "users/base.html" %}
+{% block title_content %}
+<title>{{title}}</title>
+{% endblock title_content %}
+{% block cdn_content %}
+<!-- Include Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock cdn_content%}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="  mr-2 ml-2  ">
+
+            <div class="table-responsive-md ">
+                <table class="table table-sm  caption-top ">
+                    <caption>
+                        <h2>Transactions</h2>
+                        <h5>by <b>{{value}}</b></h6>
+                    </caption>
+                    <th>ID</th>
+                    <th>ACCOUNT</th>
+                    <th>CATEGORY</th>
+                    <th>SUBCATEGORY</th>
+                    <th>DATE</th>
+                    <th>AMOUNT</th>
+                    <th></th>
+                    <th></th>
+                    {% for data in posts %}
+                    <tr>
+                        <td>{{data.id}}</td>
+                        <td><a href="{% url 'Expense-account' data.account %}">{{data.account}}</a></td>
+                        <td><a href="{% url 'Expense-category' data.category %}">{{data.category}}</a></td>
+                        <td>{{data.subcategory}}</td>
+                        <td><a href="{% url 'Expense-date' data.entry_date %}">{{data.entry_date}}</a></td>
+                        <td>{{data.amount}}</td>
+                        <td> <a href="{% url 'Expense-update' data.id %}">Edit</a></td>
+                        <td><a href="{% url 'Expense-delete' data.id %}">Delete</a> </td>
+                    </tr>
+                    {% if forloop.last %}
+                    <tr>
+
+                        <td colspan="4"></td>
+                        <td colspan="1">Total</td>
+                        <td>
+                            {% for ele in sum %}
+                            {{ele.total}}
+                            {% endfor%}
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    {% endif %}
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-12 mr-2 ml-2  ">
+            <div id="chart"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var graph = {{ account_chart| safe}}
+    Plotly.plot("chart", graph, {})
+</script>
+{% endblock content %}

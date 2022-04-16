@@ -1,0 +1,57 @@
+:root{
+    --black:#000000;
+    --grey:#121212;
+    --font_color:#c8b0da;
+    --aqua:aqua;
+    --cyan:cyan;
+    --tomato:tomato; 
+} 
+::-webkit-scrollbar{
+    width:2px; 
+    
+}
+::-webkit-scrollbar-thumb{
+    border-radius:2px;   
+    background-color:orange; 
+}  
+body{
+    background-color: var(--black);
+    color: var(--font_color);
+}
+.card-header{ 
+  
+    background-color: var(--grey);
+}
+.card-body{
+    background-color: var(--grey);
+   
+}
+a{
+    text-decoration: none;
+    color:var(--aqua);
+    
+}
+a:hover{
+    color:var(--tomato)
+}
+
+.accordion-body{
+    background-color: var(--grey);
+}
+
+.accordion-button{
+    background-color: var(--grey);
+    color: var(--font_color);
+} 
+.table{
+    background-color: var(--grey);
+}
+table th {
+    color: var(--font_color);
+}
+table td {
+    color: var(--cyan)
+}
+.value-color{
+    color: var(--cyan)
+}

@@ -1,0 +1,80 @@
+{% extends "users/base.html"%}
+
+{% block content %} 
+  
+<div class="container mt-2">
+  <div class="row mt-2 ">
+    <div class="col-sm-12  col-md-8   col-lg-6  ">
+      <div class="card-body overflow-auto border" style=" min-height: 300px;">
+        {{map|safe}}
+      </div>
+    </div>
+    <div class="col-sm-12  col-md-8  col-lg-6  ">
+      <div class="card">
+        <div class="card-body overflow-auto border " style=" height: 300px;">
+
+          <dt class="col-sm-3">IP</dt>
+          <dd class="col-sm-9 value-color">{{ip.ip}}</dd>
+
+          <div class="d-flex flex-row ">
+            <dt class="col-sm-3 ">Latitude</dt>
+            &nbsp;
+            <dd class="col-sm-3  value-color"> {{ip.latitude}} </dd>
+            &nbsp;
+            <dt class="col-sm-3">Longitude</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color">{{ip.longitude}}</dd>
+          </div>
+
+          <div class="d-flex flex-row ">
+            <dt class="col-sm-3 text-truncate">Country</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color">{{country.name}}</dd>
+            &nbsp;
+            <dt class="col-sm-3 text-truncate">Capital</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color">{{country.capital}}</dd>
+
+          </div>
+          <div class="d-flex flex-row ">
+            <dt class="col-sm-3">Currency</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color"> {{country.cname}}({{country.csymbol}}) </dd>
+          </div>
+          <div class="d-flex flex-row ">
+            <dt class="col-sm-3">Domain Level</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color"> {{country.domian}}</dd>
+            &nbsp;
+            <dt class="col-sm-3">Time zone</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color"> {{country.timezone}} </dd>
+          </div>
+
+          <div class="d-flex flex-row ">
+            <dt class="col-sm-3">Region name</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color"> {{ip.regionname}}</dd>
+          </div>
+
+          <div class="d-flex flex-row ">
+            <dt class="col-sm-3">Browser</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color"> {{userdata.browser}} </dd>
+            &nbsp;
+            <dt class="col-sm-3">Browser version</dt>
+            &nbsp;
+            <dd class="col-sm-3 value-color"> {{userdata.browserver}} </dd>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+{% endblock content%}

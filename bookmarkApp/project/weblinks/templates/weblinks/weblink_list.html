@@ -1,0 +1,49 @@
+{% extends "users/base.html"%}
+
+{% block content %} 
+
+<div class="container mt-2 mb-2 ml-2 mr-2">
+        {% regroup weblist by category as category_list %}
+        <div class="row ">
+
+                <div class="accordion" id="accordionExample">
+                        {% for category in category_list %}
+                        <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{category.grouper}}">
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#{{ category.grouper }}"
+                                                aria-expanded="false" aria-controls="{{ category.grouper }}">
+                                                {{ category.grouper }}
+                                        </button>
+                                </h2>
+                                {% for value in category.list %}
+                                <div id="{{ category.grouper }}" class="accordion-collapse collapse"
+                                        aria-labelledby="heading{{ category.grouper }}"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+
+                                                <li>
+                                                        <a href="{% url 'weblink-detail'  value.id %}"
+                                                                title="{{value.name}}">{{value.name}} </a>
+
+                                                        &nbsp;&nbsp;
+                                                        <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                                                                href="{% url 'weblink-update' value.id %}">Update</a>
+                                                        <a class="btn btn-danger btn-sm mt-1 mb-1"
+                                                                href="{% url 'weblink-delete' value.id %}">Delete</a>
+
+                                                </li>
+
+
+                                        </div>
+                                </div>
+                                {% endfor %}
+                        </div>
+                        {% endfor %}
+                </div>
+
+        </div>
+
+</div>
+
+{% endblock content%}

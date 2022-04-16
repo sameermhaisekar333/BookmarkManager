@@ -1,0 +1,72 @@
+{% extends "users/base.html" %}
+
+
+{% block content %} 
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-sm-12 col-md-6 col-lg-6 mr-2 ml-2 ">
+            <div class="card ">
+                <div class="card-body overflow-auto " style="min-height:360px">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <legend class="border-bottom mb-4 ">Add Entry</legend>
+
+                        {{ form.as_p }}
+
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mr-2 ml-2 ">
+            <div class="card ">
+                <div class="card-body overflow-auto " style="height:360px">
+                    <div class="table-responsive-md ">
+                        <table class="table table-sm ">
+                            <th>Account</th>
+
+                            {% for name in accounts %}
+                            <tr>
+                                <td>{{name.account}} </td>
+                            </tr>
+                            {% endfor%}
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 mr-2 ml-2 mt-2 ">
+        <div class="card ">
+            <div class="card-body overflow-auto " style="height:360px">
+
+                <div class="table-responsive-md ">
+                    <table class="table table-sm ">
+
+                        <th>Category</th>
+                        <th>Subcategory</th>
+
+
+                        {% for name in categories %}
+                        <tr>
+                            <td> {{name.category}} </td>
+                            <td> {{name.subcategory}} </td>
+                        </tr>
+
+                        {% endfor%}
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="content-section">
+        <div class="card"> 
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Delete </legend>
+                        <h2>Are you sure you want to delete ID "{{ object.id }}"</h2>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'Expense-detail' object.id %}">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
